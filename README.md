@@ -10,11 +10,39 @@ Most memcoins on Pump Fun are short-lived. The challenge was to:
 
 ## Approach
 
-I built a **stacking ensemble model** with the following base learners:
-- LightGBM
-- XGBoost
-- CatBoost
-- Multi-layer Perceptron (MLP)
+### 1. Data Preprocessing
+
+- Integrated multiple datasets: transaction chunks, token metadata from Dune, and on-chain info.
+- Filtered swap and liquidity events to only include those within the **first 100 blocks post-mint**, aligning with the competition constraints.
+- Handled missing values and ensured consistent token tracking across sources.
+
+### 2. Feature Engineering
+
+Created over 100 features from early behavioral data, grouped into:
+
+- **Swap and Liquidity Metrics**: total swap count, direction ratios, LP volume trends.
+- **Time Dynamics**: time to first swap/liquidity, block intervals between events.
+- **Wallet Behavior**: number of unique traders, early whales, deployer involvement, potential snipers.
+- **Token Metadata**: initial supply, deployer reputation (cross-token deployment), token type indicators.
+
+### 3. Model Development
+
+I trained four diverse base learners to capture different aspects of the data:
+
+- LightGBM: for fast training and handling of numerical features.
+- XGBoost: for robust gradient boosting with regularization.
+- CatBoost: for leveraging categorical token metadata natively.
+- MLPClassifier: to model non-linear interactions missed by tree-based models.
+
+Cross-validation was performed using StratifiedKFold to maintain label balance. The performance metric was **log loss**, per competition rules.
+
+### 4. Stacking Ensemble
+
+Predictions from each base model were stacked and fed into a Logistic Regression meta-learner. This helped:
+
+- Improve calibration of the output probabilities.
+- Combine complementary strengths of different model types.
+- Reduce overfitting from any single learner.
 
 Ensembling was done using **Logistic Regression** as the meta-learner.
 
