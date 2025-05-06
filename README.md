@@ -8,6 +8,13 @@ Most memcoins on Pump Fun are short-lived. The challenge was to:
 - Detect early behavioral signals of a token's success or failure.
 - Predict the probability that a token will **graduate** using only early transaction and metadata.
 
+## Files
+
+- `main.py`: Full end-to-end training and prediction script.
+- `requirements.txt`: All dependencies to reproduce this code.
+- `data`: https://www.kaggle.com/datasets/dremovd/pump-fun-graduation-february-2025
+- `outputs`: Stores submission files, logs, or model outputs.
+
 ## Approach
 
 ### 1. Data Preprocessing
@@ -46,12 +53,6 @@ Predictions from each base model were stacked and fed into a **Logistic Regressi
 
 Ensembling was done using **Logistic Regression** as the meta-learner.
 
-## Files
-
-- `main.py`: Full end-to-end training and prediction script.
-- `requirements.txt`: All dependencies to reproduce this code.
-- `data`: https://www.kaggle.com/datasets/dremovd/pump-fun-graduation-february-2025
-- `outputs`: Stores submission files, logs, or model outputs.
 
 ## Final Score after Submission
 
