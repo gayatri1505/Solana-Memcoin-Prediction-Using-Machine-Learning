@@ -50,8 +50,8 @@ Ensembling was done using **Logistic Regression** as the meta-learner.
 
 - `main.py`: Full end-to-end training and prediction script.
 - `requirements.txt`: All dependencies to reproduce this code.
-- `data/`: All data files
-- `outputs/`: Stores submission files, logs, or model outputs.
+- `data`: https://www.kaggle.com/datasets/dremovd/pump-fun-graduation-february-2025
+- `outputs`: Stores submission files, logs, or model outputs.
 
 ## Final Score after Submission
 
