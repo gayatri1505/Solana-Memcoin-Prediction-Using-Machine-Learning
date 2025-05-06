@@ -18,7 +18,7 @@ Most memcoins on Pump Fun are short-lived. The challenge was to:
 
 ### 2. Feature Engineering
 
-Created over 100 features from early behavioral data, grouped into:
+Created features from early behavioral data, grouped into:
 
 - **Swap and Liquidity Metrics**: total swap count, direction ratios, LP volume trends.
 - **Time Dynamics**: time to first swap/liquidity, block intervals between events.
@@ -38,7 +38,7 @@ Cross-validation was performed using StratifiedKFold to maintain label balance. 
 
 ### 4. Stacking Ensemble
 
-Predictions from each base model were stacked and fed into a Logistic Regression meta-learner. This helped:
+Predictions from each base model were stacked and fed into a **Logistic Regression** meta-learner. This helped:
 
 - Improve calibration of the output probabilities.
 - Combine complementary strengths of different model types.
